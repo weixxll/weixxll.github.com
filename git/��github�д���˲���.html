@@ -1,0 +1,54 @@
+<div class="multicntwrap">
+	<div class="multicnt">
+		<div>
+			<h3 class="title pre fs1"><span class="tcnt">在github中搭建个人博客</span>&nbsp;&nbsp;</h3>
+			<p class="title pre fs1">http://tangqiaoboy.blog.163.com/blog/static/1161142582011112510244675/</p>
+			<p class="tdep clearfix nbw-act fc06" style="line-height: 20px">
+			<span class="pleft"><span class="blogsep">2011-12-25 22:38:04</span></span></div>
+	</div>
+</div>
+<div class="nbw-blog-start">
+　</div>
+<div class="bct fc05 fc11 nbw-blog ztag js-fs2">
+	github真是无所不能。其Pages功能（&nbsp;<a rel="nofollow" href="http://pages.github.com/">http://pages.github.com/</a>）支持上传html，并且在页面中显示。于是有好事者做了一个基于github的博客管理工具：octopress（<a rel="nofollow" href="http://octopress.org/docs/setup/">http://octopress.org/</a>），基本原理是用git来管理你的文章，然后最终发布到github上成为一个独立博客站点。由于github支持CNAME域名指向，所以如果有独立域名的话，可以基于这些做出一个专业的博客站点出来。<div>
+		<br>
+　</div>
+	<div>
+		我今天花了一天时间来完成了我基于github的个人博客站点的搭建，网址是：<a target="_blank" rel="nofollow" href="http://blog.devtang.com">http://blog.devtang.com</a>。把基本的功能都试用了一遍，应该说这个博客系统还是很适合程序员的，定制性也比较好。而且所有文章本地都有备份，也有本地的版本管理，还支持rsync上传，所以完全可以保证数据安全性和可移植性。<span style="line-height: 22px">我会试着慢慢把自己的文章移到github上管理。</span></div>
+	<div>
+		<br>
+　</div>
+	<div>
+		关于搭建这种博客的方法，网上已经有很多贴子，比如这里：</div>
+	<div>
+		<a rel="nofollow" href="http://www.yangzhiping.com/tech/octopress.html">
+		http://www.yangzhiping.com/tech/octopress.html</a></div>
+	<p>
+	<a rel="nofollow" href="http://blog.xupeng.me/2011/12/14/migrate-to-octopress/">
+	http://blog.xupeng.me/2011/12/14/migrate-to-octopress/</a></p>
+	<p>官方的说明文档也必须看，讲得很讲细：<a rel="nofollow" href="http://octopress.org/docs/setup/">http://octopress.org/docs/setup/</a></p>
+	<p><br>
+　</p>
+	<p>简单总结一下我今天搭建时遇到的问题和tricky：</p>
+	<p>1. 安装rvm时，有些人博客中提到的方法不对，应该用rvm官网（https://rvm.beginrescueend.com/)的方法，另外，安装到的位置是HOME/.rvm目录下，需要设置一下classpath</p>
+	<p>　</p>
+	<pre class="prettyprint">　</pre>
+	<p><span class="pln">bash </span><span class="pun">-</span><span class="pln">s 
+	stable </span><span class="pun">&lt;</span><span class="pln"> </span>
+	<span class="pun">&lt;(</span><span class="pln">curl </span><span class="pun">-</span><span class="pln">s 
+	https</span><span class="pun">:</span><span class="com">//raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)</span></p>
+	<pre>　</pre>
+	2. mac机自带的ruby版本太老了，需要用第1步安装的rvm来装最新的1.9.2版<p>3. 需要在定制文件： _config.yml 
+	中把twitter中的信息全部删掉，否则由于防火长城GFW的原因，将会造成页面load很慢。</p>
+	<p>4. 需要在定制文件/source/_includes/custom/head.html 
+	把google的自定义字体去掉，否则方滨兴老师会让你的网站时不时卡一下。</p>
+	<p>5. 发布文章用 rake new_post['title]</p>
+	<p>&nbsp; &nbsp; 生成静态文件中 rake generate</p>
+	<p>&nbsp; &nbsp; 上传到github用 rake deploy , 建议deploy前，用rake preview看一下，脚本会在4000端口启动一下web 
+	server，然后就可以在浏览器上看效果了。</p>
+	<p>6. 如果要在文章中上传图片，直接copy到 /source/images目录下即可。在文章中用 {% img 
+	/images/pic_name.png %}来引用即可。</p>
+	<p>7. 如果要在文章中插入代码，用 ``` [language] 这儿放你要插入的代码 ``` 即可。</p>
+	<p><br>
+　</p>
+	<p>祝大家玩得开心。</div>
