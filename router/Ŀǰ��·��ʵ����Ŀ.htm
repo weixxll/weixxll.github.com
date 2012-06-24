@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>目前的路由实现项目</title>
+	<style type="text/css">
+		body {color:#FFFFFF; background-color:#000000;}
+    </style>  
+</head>
+
+<body>
+
+目前的路由实现项目 &nbsp; <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>
+Routed <br>
+这是最古老的Unix路由协议守护进程。它只包含RIP协议的版本1和版本2（见RFC2453）。 源码可以在FreeBSD中获得，主要是radix.c和route.c两个文件。可以参考W. 
+Richard Stevens的经典著作《TCP/IP详解》第二卷。FreeBSD的代码跟Stevens的书已经不太一样，但是基本的思想没有变化。<br>
+GateD (http://www.gated.org) <br>
+包含大部分路由协议。这最初是由Merit GateD联盟发起的一个研究项目，但后来版权属于NextHop。该研究版本 
+不再被维护。目前源码好像不是很容易获得。谁有给我一份吧。J<br>
+BIRD (http://bird.network.cz) <br>
+由布拉格Charles 大学发起的一个项目，支持大部分常用的路由协议。 <br>
+下面列出的路由协议套件仍然被维护并且被部署： <br>
+Zebra (http://www.zebra.org) <br>
+包含大部分路由协议，已经被广泛部署且其邮件列表仍然很活跃。但其发布周期已经变慢，导致出现了Quagga。 
+目前Zebra还是一个很流行的项目，听说国内有不少路由器的实现都是在Zebra的基础上修改的的。:)<br>
+Quagga (http://www.quagga.net) <br>
+Zebra的一个分支，创建于2003年，其开发周期和BUG修复更快，并且可以向用户提供更多的文档。 <br>
+MRT (http://sourceforge.net/projects/mrt/)<br>
+MRT是<b>M</b>ulti-Threaded <b>R</b>outing <b>T</b>oolkit的缩写。支持多线程，路由结构是用BSD的radix。有时间好好研究研究一下。<br>
+<img src="http://www.cublog.cn/images/face/001.gif" onload="if(this.width&gt;screen.width*0.7) {this.resized=true; this.width=screen.width*0.7; this.alt='Click here to open new window\nCTRL+Mouse wheel to zoom in/out';}" onmouseover="if(this.width&gt;screen.width*0.7) {this.resized=true; this.width=screen.width*0.7; this.style.cursor='hand'; this.alt='Click here to open new window\nCTRL+Mouse wheel to zoom in/out';}" onclick="if(!this.resized) {return true;} else {window.open('http://www.cublog.cn/images/face/001.gif');}" onmousewheel="return imgzoom(this);" alt="" border="0"><br>
+XORP (http://www.xorp.org) <br>
+由加利福尼亚伯克利大学国际计算机科学委员会发起的一个新项目。这个是一个C++项目。<br>
+LC-Trie (<br>
+<a target="_blank" href="http://www.csc.kth.se/~snilsson/">
+http://www.csc.kth.se/~snilsson/</a><br>
+)<br>
+Linux内核的路由是根据这个算法实现的。算法的代码在该网站上，不过只实现最基本的查询功能。如果想用起来，估计需要参考Linux的内核了。<br>
+AST (<br>
+<a target="_blank" href="http://psp1.iit.cnr.it/~mcsoft/ast/ast.html">
+http://psp1.iit.cnr.it/~mcsoft/ast/ast.html</a><br>
+)<br>
+据AST的作者声称，AST的速度明显优于LC-Trie。具体没有测试过。该算法有比较完整的实现，不过没有直接的C语言代码，需要下一个工具转换一下，具体看README吧。<br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>
+<br>
+<b>本文来自ChinaUnix博客，如果查看原文请点：</b><a target="_blank" href="http://blog.chinaunix.net/u/28366/showart_215896.html">http://blog.chinaunix.net/u/28366/showart_215896.html</a></body></html>

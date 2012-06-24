@@ -1,0 +1,83 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>开源路由软件包Quagga</title>
+	<style type="text/css">
+		body {color:#FFFFFF; background-color:#000000;}
+    </style>  
+
+</head>
+
+<body>
+
+<span class="blog_zhengwen_biaoti">
+<h1>开源路由软件包Quagga</h1>
+</span><span class="zhengwen_time">　(2006-11-11 22:42)</span>
+
+<p>　</p>
+<div class="blog_content" style="word-wrap: break-word">
+	前几天研究了一把bird，今天弄的是quagga，不要看这个软件其貌不扬（说真的，读起来还真有点拗口），但是其整体构架却很灵活。<br>
+	&nbsp;<br>
+	quagga 
+	是从zebra发展而来的，使用zebra来进行路由表的管理，并且有一些独立的路由进程，如ospfd,ripd,bgpd,ospf6d等等。与 
+	bird相比，能够提供一些更先进的选项，如ospf的非透明LSA等等。并且，quagga与bird的区别正如cisco与juniper在配置上的区别。quagga提供给用户一系列TCP端口，如果要配置zebra，则可以登陆到2601端口，如果要配置ospfd则可以登陆到2604端口，登陆后quagga提供了一个与IOS类似的CLI，使用write命令还可以将配置文件保存到/usr/local/etc/quagga目录下，并且配置文件的格式都是与cisco的配置文件的格式一样，用!将各行分开。<br>
+	&nbsp;<br>
+	经过测试，quagga能够很好的与cisco的ospf路由进程交互，能够正确的建立起full关系，抓包显示基本上是与RFC标准兼容的。并且还有两个bird所不具有的功能：路由重分布与路由映射。<p>
+	　</p>
+	<p>　</p>
+	<p><br>
+	Debian中安装Quagga的注记<br>
+	&nbsp;<br>
+	&nbsp;<br>
+	&nbsp;<br>
+	Debian中的Zebra已经由Quagga替代，默认安装的时候，/etc/quagga下只有debian.conf,daemons，并且quagga没有启动，daemons中需要zebra 
+	= 10,其他的不能是10，否则不会启动模块。<br>
+	&nbsp;<br>
+	还有默认没有ripd，OSPFd这些监控程序的配置文件，需要cp /usr/share/doc/quagga/examples/ripd.conf.examples 
+	/etc/quagga/ripd.conf，才能让Quagga完全的启动成功，当然要修改相应的配置。<br>
+	&nbsp;<br>
+	配置的界面和Cisco IOS还真的非常类似，还待研究下。<br>
+	&nbsp;<br>
+	　</p>
+	<p>　</p>
+	<p>　</p>
+	<p>开源路由软件包Quagga</p>
+	<p><br>
+	keywords:Quagga,routing,zebra，suite</p>
+	<p>Quagga is a routing software suite, providing implementations of OSPFv2, 
+	OSPFv3, RIP v1 and v2, RIPv3 and BGPv4 for Unix platforms, particularly 
+	FreeBSD, Linux, Solaris and NetBSD. Quagga is a fork of GNU Zebra which was 
+	developed by Kunihiro Ishiguro. The Quagga tree aims to build a more 
+	involved community around Quagga than the current centralised model of GNU 
+	Zebra.</p>
+	<p>The Quagga architecture consists of a core daemon:</p>
+	<p>* zebra</p>
+	<p>Which acts as an abstraction layer to the underlying Unix kernel and 
+	presents the Zserv API over a Unix or TCP stream to Quagga clients. It is 
+	these Zserv clients which typically implement a routing protocol and 
+	communicate routing updates to the zebra daemon. Existing Zserv clients are:</p>
+	<p>* ospfd</p>
+	<p>&nbsp; implementing OSPFv2<br>
+	* ripd</p>
+	<p>&nbsp; implementing RIP v1 and V2<br>
+	* ospf6d</p>
+	<p>&nbsp; implementing OSPFv3 (IPv6)<br>
+	* ripngd</p>
+	<p>&nbsp; implementing RIP v3 (IPv6)<br>
+	* bgpd</p>
+	<p>&nbsp; implementing BGPv4+ (including address family support for multicast and 
+	IPv6)</p>
+	<p>Additionally, the Quagga architecture has a rich development library to 
+	facilitate the implementation of protocol/client daemons, coherent in 
+	configuration and administrative behaviour.</p>
+	<p>Quagga daemons are each configurable via a network accessible CLI (called 
+	a 'vty'). The CLI follows a style similar to that of other routing software. 
+	There is an additional tool included with Quagga called 'vtysh', which acts 
+	as a single cohesive front-end to all the daemons, allowing one to 
+	administer nearly all aspects of the various Quagga daemons in one place.<br>
+	<a target="_blank" href="http://www.quagga.net">http://www.quagga.net</a></div>
+
+</body>
+
+</html>

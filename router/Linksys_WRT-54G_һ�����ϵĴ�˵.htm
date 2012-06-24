@@ -1,0 +1,294 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>Linksys WRT-54G</title>
+	<style type="text/css">
+		body {color:#FFFFFF; background-color:#000000;}
+    </style>  
+
+</head>
+
+<body>
+
+<div class="tit">
+	Linksys WRT-54G，一个不老的传说<p>
+	<a href="http://hi.baidu.com/delovery/blog/item/c447968f068651e8513d92a5.html">
+	http://hi.baidu.com/delovery/blog/item/c447968f068651e8513d92a5.html</a></p>
+	<p>　</div>
+<div class="date">
+	2011-01-01 14:03</div>
+<table style="table-layout: fixed; width: 100%" id="table1">
+	<tr>
+		<td>
+		<div id="blog_text" class="cnt">
+			Linksys 
+			于2003年底推出了一款优秀的无线路由器：WRT-54G。一开始的时候，它并不引人注意，人们仅仅把它当作一个无线接入点而已。不过选择了linux 
+			作为操作系统给它带来了一个意想不到的机会，那就是用户可以根据自己的需要，在上面自由的修改和发布新的firmware。随着一些功能丰富的第三方 
+			firmware的出现，它终于散发出了迷人的魅力，为广大玩家所追捧。Linksys至今依然生产销售WRT-54G这个系列的产品，足见其受欢迎的程 
+			度，WRT-54G还在续写着一个不老的传说。 
+			<p>　</p>
+			<p>那么它究竟有什么能耐让玩家如此推崇呢？下面让alflie带领你深入它那神奇的世界一探究竟。厄，且慢，是WRT-54G 
+			的firmware让它流行起来的，所以不妨先来看看它们演变的历程。</p>
+			<p>WRT-54G刚推出的时候，官方firmware的功能并不强大，不久后，一家叫做sveasoft公司看到的其中的契机，在其基础上开发了 
+			Alchemy，并按每份拷贝收取20美元，这就让开源社区的用户大为不满了，连Linksys都遵循GPL开放了官方firmware的源代码，凭什么 
+			sveasoft这个第三方的firmware却要收费，于是，一些热心的发烧友重起炉灶，开发了其他的版本，目前比较流行的是HyperWRT，DD- 
+			WRT和OpenWRT。其中HyperWRT的理念是忠于官方版本，只增加小部分功能，追求高稳定性；OpenWRT的理念则是设计一个通用的最小内 
+			核，让该内核也可以运行在其他品牌的无线路由器上，然后由其他人在上面开发新的功能插件，不过它的易用性就比较差了，需要通过命令行来配置；而DD- 
+			WRT追求的则是最完善的功能和最佳的易用性，它的确做到了这一点，因而赢得了广大用户芳心。平心而论，OpenWRT的开发模式才是正确的方向，它的 
+			ipkg就很好用，一些高阶的用户更偏爱OpenWRT，相信OpenWRT日后必有大的作为。</p>
+			<p>目前DD-WRT是最流行的版本，为了照顾大部分读者，我选择了DD-WRT作为范例，现在让我们开始WRT-54G的神奇之旅吧。</p>
+			<p>一、路由与交换 </p>
+			<p>顾名思义，WRT-54G的一项重要的功能就是支持路由。</p>
+			<p>市面上，和WRT-54G同等级别的网络设备，比如ASUS adsl modem和D-link VPN网关等，都只支持静态路由和RIP，而DD-WRT除了支持前面两种外，还支持企业级别的动态路由协议：OSPF和BGP。实现路由功能的模块是 
+			BIRD，相对于linux下著名的路由软件Quagga （前身是zebra）一点也不逊色。有兴趣的读者可以参考www.bird.org。</p>
+			<p>WRT-54G提供了5个以太网口和1个无线网口。其中5个以太网口又分出1个WAN口和4个LAN口。得益于linux的高灵活性和可配置性，我 
+			们可以在DD-WRT中对这六个网口进行自由组合，创建多个vlan，最大可以支持15个，另外DD-WRT还支持tag（802.1q），和 
+			trunk，亦即在多条链路之间负载均衡。结合路由和交换，WRT-54G完全可以在小型企业的网络里面一展身手，作为三层交换机非常合适。事实上，国外 
+			一些中小型企业就专门购买WRT-54G，将firmware刷成DD-WRT，关闭无线功能，启用路由和划分vlan，配置tag和trunk来取代高 
+			昂的网络设备。</p>
+			<p>花这么少的钱就能使用万元级别网络设备的功能，真不可思议！</p>
+			<p>二、无线功能 </p>
+			<p>
+			另一个重要的功能当然就是无线啦。因为工作的关系，alfie曾试用过多种品牌无线路由器，相比之下，WRT-54G的无线信号和稳定性要高于同级 
+			别的其他品牌，如TP-Link，D-Link和netgear等，比cisco稍差，不过买一个cisco 
+			1240G就可以买8个WRT-54G了。WRT-54G还提供了异常丰富的物理调配选项，从速率到发射功率不一而足，比1240G尤过之而无不及。单纯 
+			从物理性能方面的比较还无法表现出DD-WRT的优势，其丰富的无线安全选项才是我喜欢它的原因。DD-WRT支持WEP，WPA和WPA2加密方式，支 
+			持radius认证和802.1x端口安全，在企业中组网的时候，完全可以在其上实施微软的PEAP这种最流行、方便的安全方案。</p>
+			<p>此外，DD-WRT还支持WDS，在工地或者仓库这些空旷，布线不方便的地方，这项功能就有用武之地了，可以通过两个WRT-54G桥接两个 
+			LAN，与此同时还可以扮演AP的角色。</p>
+			<p>DD-WRT的无线功能非常丰富，即适合家庭使用，也满足企业网中苛刻的要求。</p>
+			<div>
+				三、安全 
+				<p>DD-WRT集成了linux中赫赫有名的iptables，这是一个状态检测防火墙，功能强大。实际上，像端口转发，vlan划分，DMZ（非军 
+				事区）和VPN等很多功能都是iptables在幕后（参与）实现的，iptables需要通过命令行配置，比较复杂，具体的内容已经超出了本文所讨论的 
+				范围。不过别担心，一般的用户不需要直接和它打交道，DD-WRT会在后台帮你搞定iptables。</p>
+				<p>在DD-WRT中可以创建各种各样的Internet访问策略。 
+				用户可以根据实际情况，针对客户端IP，应用，时间段和web页面的关键字来进行过滤，举个简单的例子，假设你只允许内网的用户在晚上11点至凌晨7点期 
+				间使用BT，那么就可以结合时间段和应用来创建这条访问策略了，强大而且灵活。这个功能，连同后面讲的QoS都是由iptables + 
+				l7-filter在幕后实现，这也是alfie非常喜欢WRT-54G的一个重要原因。</p>
+				<p>DD-WRT对VPN的支持是不遗余力的，对于IPSec，PPTP和L2TP的穿透根本不在话下，还内建了PPTP 
+				server/client，如果在家庭/公司的WRT-54G上启用了PPTP服务器，用户就可以随时随地访问家庭/公司的网络资源了。用户还可以在 
+				DD-WRT上通过ipkg（后面会讲述）安装目前流行的开源SSL VPN：OpenVPN，它能提供更丰富的功能，支持LAN-to-LAN，Client-to-LAN，Point-to-Point三种网络架构，支 
+				持全动态IP的VPN网关。不过OpenVPN对cpu的要求挺高的，一般用户只需要用PPTP就可以了。那企业用户怎么办，别担心，DD-WRT还提供 
+				了一个有趣的选项：cpu超频，该怎么做不用我多说了吧。</p>
+				四、网络服务DHCP <br>
+				DD-WRT集成了一个udhcp模块，该模块专为嵌入式系统设计，提供DHCP server和client的功能。 dnsmasq
+				<br>
+				该模块提供了两种功能，一是dhcp，一是dns。它的dhcp功能比udhcp更强大，不仅可以动态分配 
+				IP，它还可以根据客户机的MAC地址来分配固定的IP，机器名和域名；dnsmasq担任了部分DNS服务器的角色，当局域网中有两台机器需要互相访问 
+				的时候，比如文件共享，可以直接访问对方的机器名或域名，（机器名和域名由dnsmasq配置分配）无须在小型的网络中再构建一个DNS服务器。 
+				ddns <br>
+				动态域名解析，相信大家都知道这个是干什么的，DD-WRT集成了dysdns.org，三家的客户端，只需要从列 
+				表中选择即可，非常方便，不用再像以前那样需要在服务器中安装和配置客户端。 Samba <br>
+				DD-WRT还可以担当文件共享中继器的角色，假如你的内网有一台服务器需要提供文件共享服务给Internet 
+				的用户，只需要在DD-WRT中挂载该共享链接，外网的用户就可以通过IE来访问这些共享的文件了，安全又方便。 port 
+				forwarding <br>
+				端口转发，当需要在内网提供网络服务给Internet的用户时，就需要用到这个功能。 DD-WRT除了提供基本的端口转发外，还提供了port 
+				range forwarding、port 
+				triggering和UPnP。其中UPnP协议是微软的一项技术，当内网服务器启用一项服务的时候，它通过UPnP协议告知DD-WRT打开某个/些 
+				特定端口进行监听，并将来访的数据包进行端口转发；当该服务停止的时候，又通知DD-WRT关闭这些端口，这项特性比静态的端口转发灵活，方便，安全。 
+				IPv6 <br>
+				实在是太强了，就这么几百块钱的东西，连IPv6也支持了，还有什么好说的呢，这也反映了linux的灵活性。 ntp client
+				<br>
+				配置了该功能后，DD-WRT就可以跟Internet上的网络时间服务器进行时间同步，这在 
+				hotspot计费，OpenVPN和排除故障的时候是很有用的。 </div>
+			<p>五、管理 </p>
+			<p>DD-WRT支持3种管理界面：web，telnet和SSH</p>
+			<p>web GUI <br>
+			DD-WRT的web界面实现了绝大部分的功能，层次设计清晰，即便是菜鸟也可以很快从这里入手，特别是它的状 
+			态察看做得尤其出色，CPU，内存，DHCP租约，当前的无线客户端等等信息应有尽有，管理起来非常方便。 telnet，ssh <br>
+			对于大虾而言可能不屑于用web，DD-WRT还提供了telnet和SSH这两种管理界面，尤其是后 者，应该满足他们的要求，毕竟DD-WRT是一个linxu嵌入式系统，所以要玩弄其于鼓掌之间肯定需要用到命令行，比如使用ipkg安装新的软件包就得 
+			在这里进行。 snmp <br>
+			开启snmp后，我们可以通过网管工具，监控当前的无线用户数，带宽的利用率等内容，简单方便。 syslogd <br>
+			设备运行期间会产生一些告警信息，通过配置syslogd，就可以将这些信息传到syslogd服务器上，以便 网络管理员排错维护之用。 
+			backup <br>
+			DD-WRT在web界面里提供了备份配置的功能，不过我还是喜欢在命令行下写一个脚本，结合DD-WRT提供的 cron任务功能，进行定时备份。 
+			六、其他ipkg <br>
+			ipkg 肯定是从Debian的apt中获得的灵感，是OpenWRT设计理念中的重要组成部分。DD-WRT将它 
+			移植过来，允许用户直接在DD-WRT中，通过Internet来下载安装新的软件包，这简直是赋予了DD-WRT第二次生命，因为新的软件层出不穷，有 
+			了ipkg以后就可以随时定制DD-WRT的功能了。目前OpenWRT官方提供的软件包还比较少，不过第三方的软件库就很丰富了，从tcpdump到 
+			mysql应有尽有。 QoS <br>
+			这个东东足以写一本厚厚的书，它涉及到数据包的分类，排队，拥塞控制等。由于它太复杂，所以一般面向家庭和中低端的企 
+			业网络设备根本没有提供这项功能，而DD-WRT又再一次展示了linux的强大，提供了完整的QoS。数据流根据MAC，IP和应用可划分为4个从低到 
+			高的优先级别，队列也有两种可供选择HFSC和HTB，另外DD-WRT还可以对单个物理端口流量进行限制。这些丰富的QoS选项足以让用户流畅的使用纷 
+			繁的网络应用，国外有些用户调配WRT54G之后，同时使用BT和VoIP，如果没有强大的QoS，这根本不可能。 overclocking
+			<br>
+			超频，咋一看，我也不敢相信自己的眼睛，DD-WRT居然还有这一手，真好玩，对于硬件爱好者来 说，超频早已经是遥远的回忆了，毕竟现在的cpu动不动就是2G，双核，没有必要费九牛二虎之力超频了。不过在WRT-54G上面超频就恰到好处，因为 
+			WRT-54G只有200Mhz，如果跑要OpenVPN的话，超频就显得很有用了。 硬件版本 <br>
+			目前，除了Linksys的WRT-54G系列之外，DD-WRT也支持还有其他品牌的无线路由器，请参见下表： </p>
+			<p>附：支持DD-WRT固件的无线路由器 <br>
+			Allnet：All0277<br>
+			Askey：RT210W<br>
+			Asus： <br>
+			Asus WL-500G deluxe<br>
+			Asus WL-500G premium <br>
+			Asus WL-300G <br>
+			Belkin： <br>
+			F5D7130/7330 (2mb flash) <br>
+			F5D7230-4 v1000, v1010, v1111 <br>
+			F5D7230-4 v1444 (2mb flash) <br>
+			Buffalo： <br>
+			WHR-G54S <br>
+			WHR-HP-G54 <br>
+			WHR-HP-G54S <br>
+			WZR-RS-G54 <br>
+			WBR-G54 <br>
+			WBR2-G54 <br>
+			WBR2-G54s <br>
+			WLA-G54 <br>
+			Linksys： <br>
+			WRT54G v1.0, v1.1, v2.0, v2.2, v3.0, v3.1, v4.0, v5.0 (2mb flash)
+			<br>
+			WRT54GL v1.0, v1.1 <br>
+			WRT54GS v1.0, v1.1, v2.0, v2.1, v3.0, v4.0, v5.0 (2mb flash) <br>
+			WRTSL54GS v1.0 <br>
+			Motorola ： <br>
+			WR850G <br>
+			Ravo： <br>
+			W54-RT<br>
+			Siemens： <br>
+			Gigaset SE505<br>
+			Gigaset SX550i</p>
+			<p>　</p>
+			<p>　</p>
+			<p>OpenWRT支持的品牌硬件更多，有兴趣的读者可以参看一下链接：http://wiki.openwrt.org /TableOfHardware</p>
+			<p>alfie还是建议花多2百块，买Linksys的产品，这样可以避免一些不必要的兼容性问题，目前国内销售的基本上都是WRT-54G 
+			v4，售价在510-540之间，下表是Linksys的硬件对比列表：</p>
+			<p>　</p>
+			<table border="0" cellpadding="0" cellspacing="0" width="540" id="table2">
+				<tr>
+					<td width="132"><strong>参数</strong></td>
+					<td width="101"><strong>CPU(MHz)</strong></td>
+					<td width="63"><strong>RAM</strong></td>
+					<td width="70"><strong>Flash</strong></td>
+					<td width="172"><strong>Serial No</strong></td>
+				</tr>
+				<tr>
+					<td width="132">WRT54G v1.0</td>
+					<td width="101">125</td>
+					<td width="63">16</td>
+					<td width="70">4</td>
+					<td width="172">CDF1xxx</td>
+				</tr>
+				<tr>
+					<td width="132">WRT54G v1.1</td>
+					<td width="101">125</td>
+					<td width="63">16</td>
+					<td width="70">4</td>
+					<td width="172">CDF2xxx-CDF3xxx</td>
+				</tr>
+				<tr>
+					<td width="132">WRT54G v2.0</td>
+					<td width="101">200</td>
+					<td width="63">16</td>
+					<td width="70">4</td>
+					<td width="172">CDF5xxx</td>
+				</tr>
+				<tr>
+					<td width="132">WRT54G v2.2</td>
+					<td width="101">200</td>
+					<td width="63">32</td>
+					<td width="70">4</td>
+					<td width="172">CDF7xxx</td>
+				</tr>
+				<tr>
+					<td width="132">WRT54G v3.0</td>
+					<td width="101">200</td>
+					<td width="63">16</td>
+					<td width="70">4</td>
+					<td width="172">CDF8xxx</td>
+				</tr>
+				<tr>
+					<td width="132">WRT54G v3.1</td>
+					<td width="101">200</td>
+					<td width="63">16</td>
+					<td width="70">4</td>
+					<td width="172">CDF9xxx</td>
+				</tr>
+				<tr>
+					<td width="132">WRT54G v4.0</td>
+					<td width="101">200</td>
+					<td width="63">16</td>
+					<td width="70">4</td>
+					<td width="172">CDFAxxx</td>
+				</tr>
+				<tr>
+					<td width="132">WRT54G v5.0*</td>
+					<td width="101">200</td>
+					<td width="63">8</td>
+					<td width="70">2</td>
+					<td width="172">CDFBxxx</td>
+				</tr>
+				<tr>
+					<td width="132"><span style="color: #0055ff">WRT54GS v1.0</span></td>
+					<td width="101"><span style="color: #0055ff">200</span></td>
+					<td width="63"><span style="color: #0055ff">32</span></td>
+					<td width="70"><span style="color: #0055ff">8</span></td>
+					<td width="172"><span style="color: #0055ff">CGN0xxx-CGN1xxx</span></td>
+				</tr>
+				<tr>
+					<td width="132"><span style="color: #0055ff">WRT54GS v1.1</span></td>
+					<td width="101"><span style="color: #0055ff">200</span></td>
+					<td width="63"><span style="color: #0055ff">32</span></td>
+					<td width="70"><span style="color: #0055ff">8</span></td>
+					<td width="172"><span style="color: #0055ff">CGN2xxx</span></td>
+				</tr>
+				<tr>
+					<td width="132"><span style="color: #0055ff">WRT54GS v2.0</span></td>
+					<td width="101"><span style="color: #0055ff">200</span></td>
+					<td width="63"><span style="color: #0055ff">32</span></td>
+					<td width="70"><span style="color: #0055ff">8</span></td>
+					<td width="172"><span style="color: #0055ff">CGN3xxx</span></td>
+				</tr>
+				<tr>
+					<td width="132"><span style="color: #0055ff">WRT54GS v2.1</span></td>
+					<td width="101"><span style="color: #0055ff">200</span></td>
+					<td width="63"><span style="color: #0055ff">32</span></td>
+					<td width="70"><span style="color: #0055ff">8</span></td>
+					<td width="172"><span style="color: #0055ff">CGN4xxx</span></td>
+				</tr>
+				<tr>
+					<td width="132"><span style="color: #0055ff">WRT54GS v3.0</span></td>
+					<td width="101"><span style="color: #0055ff">200</span></td>
+					<td width="63"><span style="color: #0055ff">32</span></td>
+					<td width="70"><span style="color: #0055ff">8</span></td>
+					<td width="172"><span style="color: #0055ff">CGN5xxx</span></td>
+				</tr>
+				<tr>
+					<td width="132">WRT54GS v4.0</td>
+					<td width="101">200</td>
+					<td width="63">16</td>
+					<td width="70">4</td>
+					<td width="172">CGN6xxx</td>
+				</tr>
+				<tr>
+					<td width="132">WRT54GS v5*</td>
+					<td width="101">200</td>
+					<td width="63">16</td>
+					<td width="70">2</td>
+					<td width="172">CGN7xxx</td>
+				</tr>
+			</table>
+　</p>
+			<p>需要注意的是WRT54G v5和WRT54GS v5这两款，Linksys被cisco收购后，cisco减少了Flash和RAM容量，并将操作系统换成了VxWorks，如果要刷成其他 
+			firmware的话，需要为它增加一个串口，不过由于RAM太小，所以不建议购买。</p>
+			<p>七、定制你的WRT-54G </p>
+			<p>wrt54不仅仅在软件方面给用户最大的自由度，而且在硬件方面也留有很多可以修改的余地。</p>
+			<p>DD-WRT就有一个MMC/SD的选项，也就是说，如果你觉得4M的Flash太小，无法满足你的要求，那么可以额外为WRT-54G增加一块 
+			MMC/SD卡，当然，这需要在电路板上进行一些焊接工作，可别吓着了，请参考http://support.warwick.net/~ryan 
+			/wrt54g-v4/v4_sd_done.html，它提供了非常翔实的资料，只要您有一些焊接知识，完全可以自己动手搞定。</p>
+			<p>增加MMC/SD仅仅是冰山一角，清看看这里http://wiki.openwrt.org/OpenWrtDocs/Customizing， 
+			看看那些疯狂的玩家都对WRT-54G干了些什么，难以置信！有人为WRT-54G增加了音箱，有人为它增加了LCD，甚至有人将外壳拆了，将电路板装在 
+			遥控车上，实现了真正意义上的“无限你的无线”</p>
+			<p>是否还有意犹未尽的感觉？五百来块钱的东西可以提供如此丰富的特性实属难得，我们既可以拿来学习计算机网络和linux知识，又可以拿来构建企业 
+			网，朋友们，还等什么，还不赶紧买多几台回去玩玩！</p>
+			<p>版权声明：本文由alfie于2006年撰写，本想向某报社投稿，结果因为篇幅过长被拒了，欢迎大家做外链，但是不能将本文全部或片段做商业或非商 
+			业用途。不便之处，敬请原谅。</div>
+		</td>
+	</tr>
+</table>
+
+</body>
+
+</html>
